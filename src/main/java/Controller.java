@@ -31,6 +31,11 @@ public class Controller {
         System.out.println(basket.noOfProductsInTheBasket());
         System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
         System.out.println(basket.calculateAppleDiscount());
+        System.out.println(basket.calculateBreadDiscount());
+        basket.addAProductToBasket(soup);
+        System.out.println(basket.calculateBreadDiscount());
+
+        System.out.println(soup);
 
     }
 }

@@ -72,6 +72,43 @@ public class Basket {
         return formatPrice(appleDiscount);
     }
 
+    // To calculate the discount on bread if at least 2 soups are purchased
+    public double calculateBreadDiscount(){
+        // need to check if the basket has soup & has bread & in what quantity
+        // find the price of bread to calculate discount on it
+
+        int soupCount = 0, breadCount = 0;
+        double breadPrice = 0, breadDiscount = 0;
+
+        for(Product product : this.products){
+            if(product.getName() == "Soup"){
+                soupCount += 1;
+            }
+            if(product.getName() == "Bread"){
+                breadCount += 1;
+                breadPrice = product.getPrice();
+            }
+        }
+
+
+        if(breadCount > 0 && soupCount >= 2){
+            // 1 bread has discount for 2 soups, so we count the number of breads that can get discount based on soup count
+            int noOfBreadsApplicableForDiscount  = soupCount/2;
+
+            // if we have more breads (breadCount) than valid for the discount(noOfBreadsApplicableForDiscount), use the latter for calculating discount
+            if(breadCount >= noOfBreadsApplicableForDiscount) {
+                breadDiscount = breadPrice * noOfBreadsApplicableForDiscount * 0.5;  // 50%
+            }
+            // only apply discount on the number of breads in basket because the applicable breads count is more
+            // if the noOfBreadsApplicableForDiscount is more than the actual no of breads in basket then do the following
+            else if(breadCount < noOfBreadsApplicableForDiscount)
+            {
+                breadDiscount = breadPrice * breadCount * 0.5;   // 50%
+            }
+        }
+
+        return formatPrice(breadDiscount);
+    }
 }
 
 
