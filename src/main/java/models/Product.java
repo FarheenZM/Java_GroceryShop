@@ -29,5 +29,13 @@ public class Product {
     public String getImageUrl() {
         return imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
 
