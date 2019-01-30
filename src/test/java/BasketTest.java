@@ -49,6 +49,15 @@ public class BasketTest {
         basket.removeAProductFromBasket(p2);
         assertEquals(1, basket.noOfProductsInTheBasket());
     }
-    
+
+    @Test
+    public void canCalculateTotalPriceOfProductsInBasket(){
+        assertEquals(0.0, basket.calculateSubtotalOfProductsInTheBasket(), 0.0);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p3);
+        basket.addAProductToBasket(p3);
+        basket.addAProductToBasket(p4);
+        assertEquals(4.25, basket.calculateSubtotalOfProductsInTheBasket(), 0.0);
+    }
 }
 
