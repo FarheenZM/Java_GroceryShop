@@ -44,14 +44,6 @@ public class Basket {
     }
 
 
-
-    // To limit the decimal places of a number(price here)
-    public static double formatPrice(double input)
-    {
-        DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(input));
-    }
-
     // To calculate the discount(10%) on apples
     public double calculateAppleDiscount(){
         // need to check if the basket has apples & also check its quantity
@@ -108,6 +100,26 @@ public class Basket {
         }
 
         return formatPrice(breadDiscount);
+    }
+
+    // To calculate the final bill on products after applying the available discounts
+    public double calculateFinalBill(){
+
+        double subtotal = calculateSubtotalOfProductsInTheBasket();
+        double appleDiscount = calculateAppleDiscount();
+        double breadDiscount = calculateBreadDiscount();
+
+
+        double finalBill = subtotal - appleDiscount - breadDiscount;
+
+        return formatPrice(finalBill);
+    }
+
+    // To limit the decimal places of a number(price here)
+    public static double formatPrice(double input)
+    {
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.parseDouble(df.format(input));
     }
 }
 

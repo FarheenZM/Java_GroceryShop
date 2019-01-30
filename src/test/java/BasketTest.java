@@ -183,5 +183,44 @@ public class BasketTest {
         basket.removeAProductFromBasket(p1);
         basket.removeAProductFromBasket(p1);
     }
+
+    @Test
+    public void canCalculateFinalBill(){
+        // empty basket
+        assertEquals(0.0, basket.calculateFinalBill(), 0.001);
+
+        // 1 soup & 1 milk (no discounts)
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p3);
+        assertEquals(1.95, basket.calculateFinalBill(), 0.001);
+        basket.removeAProductFromBasket(p3);
+        basket.removeAProductFromBasket(p1);
+
+
+        // 1 soup & 1 bread (no discount), 1 apple (discount), 1 milk
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        basket.addAProductToBasket(p3);
+        basket.addAProductToBasket(p4);
+        assertEquals(3.65, basket.calculateFinalBill(), 0.001);
+        basket.removeAProductFromBasket(p4);
+        basket.removeAProductFromBasket(p3);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+
+        // 2 soups & 1 bread (discount), 1 apple (discount), 1 milk
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        basket.addAProductToBasket(p3);
+        basket.addAProductToBasket(p4);
+        assertEquals(3.90, basket.calculateFinalBill(), 0.001);
+        basket.removeAProductFromBasket(p4);
+        basket.removeAProductFromBasket(p3);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+    }
+
 }
 

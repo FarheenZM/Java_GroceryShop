@@ -36,6 +36,8 @@ public class Controller {
         System.out.println(basket.calculateBreadDiscount());
 
         System.out.println(soup);
+        System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
+        System.out.println(basket.calculateFinalBill());
 
     }
 }
