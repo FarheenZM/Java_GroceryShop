@@ -25,7 +25,11 @@ public class Controller {
         Basket basket = new Basket();
         System.out.println(basket.noOfProductsInTheBasket());
         basket.addAProductToBasket(apple);
+        basket.addAProductToBasket(soup);
+        basket.addAProductToBasket(milk);
         System.out.println(basket.noOfProductsInTheBasket());
+        System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
+        System.out.println(basket.calculateAppleDiscount());
 
     }
 }

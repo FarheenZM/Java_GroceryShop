@@ -59,5 +59,34 @@ public class BasketTest {
         basket.addAProductToBasket(p4);
         assertEquals(4.25, basket.calculateSubtotalOfProductsInTheBasket(), 0.0);
     }
+
+    @Test
+    public void canCalculateAppleDiscount(){
+        // if Apple is not purchased (Bread is)
+        basket.addAProductToBasket(p2);
+        assertEquals(0, basket.calculateAppleDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+
+        // if 1 Apple
+        basket.addAProductToBasket(p4);
+        assertEquals(0.10, basket.calculateAppleDiscount(), 0.0);
+        basket.removeAProductFromBasket(p4);
+
+        // if 2 Apples
+        basket.addAProductToBasket(p4);
+        basket.addAProductToBasket(p4);
+        assertEquals(0.20, basket.calculateAppleDiscount(), 0.01);
+        basket.removeAProductFromBasket(p4);
+        basket.removeAProductFromBasket(p4);
+
+        // if 2 Apples along with other products
+        basket.addAProductToBasket(p4);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p4);
+        assertEquals(0.20, basket.calculateAppleDiscount(), 0.01);
+//        basket.removeAProductFromBasket(p4);
+//        basket.removeAProductFromBasket(p1);
+//        basket.removeAProductFromBasket(p4);
+    }
 }
 

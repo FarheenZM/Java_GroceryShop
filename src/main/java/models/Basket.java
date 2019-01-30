@@ -43,11 +43,33 @@ public class Basket {
         return formatPrice(subTotal);
     }
 
+
+
     // To limit the decimal places of a number(price here)
     public static double formatPrice(double input)
     {
         DecimalFormat df = new DecimalFormat("#.##");
         return Double.parseDouble(df.format(input));
+    }
+
+    // To calculate the discount(10%) on apples
+    public double calculateAppleDiscount(){
+        // need to check if the basket has apples & also check its quantity
+        // find the price of apple to calculate discount on it
+
+        double applePrice = 0, appleDiscount = 0;
+        int appleCount = 0;
+
+        for(Product product : this.products){
+            if(product.getName() == "Apple"){
+                appleCount += 1;
+                applePrice = product.getPrice();
+            }
+        }
+
+        appleDiscount += applePrice * appleCount * 0.1;  // 10%
+
+        return formatPrice(appleDiscount);
     }
 }
 
