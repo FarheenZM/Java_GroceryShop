@@ -13,13 +13,13 @@ public class Controller {
         Product apple = new Product(3,"Apple", 1.00, "/images/apples.png");
 
         // Creating an array of all products available in the shop, so that they can be displayed in the shop
-        ArrayList<Product> allProductsInShop = new ArrayList<Product>();
+        ArrayList<Product> allProductsInShop = new ArrayList<>();
         allProductsInShop.add(soup);
         allProductsInShop.add(bread);
         allProductsInShop.add(milk);
         allProductsInShop.add(apple);
 
-        System.out.println(allProductsInShop.toString());
+        System.out.println(allProductsInShop);
 
         // Creating an empty shopping basket initially, where products will be later added by user actions
         Basket basket = new Basket();
@@ -27,6 +27,7 @@ public class Controller {
         basket.addAProductToBasket(apple);
         basket.addAProductToBasket(soup);
         basket.addAProductToBasket(milk);
+        basket.addAProductToBasket(bread);
         System.out.println(basket.noOfProductsInTheBasket());
         System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
         System.out.println(basket.calculateAppleDiscount());

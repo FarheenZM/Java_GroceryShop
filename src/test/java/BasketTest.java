@@ -88,5 +88,100 @@ public class BasketTest {
 //        basket.removeAProductFromBasket(p1);
 //        basket.removeAProductFromBasket(p4);
     }
+
+    @Test
+    public void canCalculateBreadDiscount(){
+        // 2 Soups but no bread is purchased
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        assertEquals(0, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+        // No soup & 1 bread
+        basket.addAProductToBasket(p2);
+        assertEquals(0.0, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+
+        // 1 soup & 1 bread - no discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.0, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+
+        // if 2 Soups & 1 bread - 1 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.40, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+        // if 2 Soups & 2 bread - only 1 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.40, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+        // if 3 Soups & 1 bread - 1 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.40, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+        // if 3 Soups & 2 bread - only 1 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.40, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+
+        // if 4 Soups & 1 bread - 1 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.40, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+
+        // if 4 Soups & 2 bread - 2 bread gets discount
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p1);
+        basket.addAProductToBasket(p2);
+        basket.addAProductToBasket(p2);
+        assertEquals(0.80, basket.calculateBreadDiscount(), 0.0);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p2);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+        basket.removeAProductFromBasket(p1);
+    }
 }
 
