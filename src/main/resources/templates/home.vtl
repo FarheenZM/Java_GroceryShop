@@ -1,0 +1,23 @@
+<!--home page layout-->
+
+<div class="main-home">
+
+    <h2>Products in Shop</h2>
+
+
+    #foreach($product in $allProducts)
+
+    <div class="home-display">
+        <img src="$product.getImageUrl()" width="250" height="270"/>
+
+        <p> $product.getName()  <b>£$product.getPrice()</b> </p>
+
+
+        <form action="/basket/$product.getId()" method="post">
+            <input type="submit" value="+" class="button" id="button-add"/>
+        </form>
+    </div>
+
+    #end
+
+</div>

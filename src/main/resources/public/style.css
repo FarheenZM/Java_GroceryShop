@@ -1,0 +1,59 @@
+html {
+  height: 99%;
+}
+
+body {
+  min-height: 99%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+h2 {
+    font-family: "Verdana";
+}
+
+p {
+    font-family: "Verdana";
+}
+
+.wrapper {
+    background-color : #AFD275;
+}
+
+
+/* Header */
+.header {
+  display: flex;
+  background-color: #7E685A;
+  width: 100%;
+}
+
+.header li {
+  display: inline-block;
+  text-transform: uppercase;
+
+}
+
+.header li a {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+}
+.header a:hover {
+  color: yellow;
+}
+
+/* Home page */
+.main-home {
+    text-align : center;
+}
+.home-display {
+    display : inline-block;
+}
+
+/* Footer */
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
