@@ -1,0 +1,33 @@
+<!--bill layout with calculated discounts and total-->
+
+<div>
+    #if($basket.noOfProductsInTheBasket() == 0)
+    <h2>Basket is Empty</h2>
+    #break
+    #end
+    <div class="main-bill">
+        <h2>Bill Details</h2>
+
+        <!--Displaying the total no. of products in basket-->
+        <p>No. of products : <b> $basket.noOfProductsInTheBasket() </b></p>
+
+        <!--Calculating the subtotal of products (no discounts applied)-->
+        <p>Subtotal :  <b> £$basket.calculateSubtotalOfProductsInTheBasket() </b></p>
+
+        <!--Calculating the apple discount if basket has apples-->
+        #set($appleDiscount = $basket.calculateAppleDiscount())
+        #if($appleDiscount != 0)
+        <p>Apples 10% off :  <b> -£$appleDiscount </b></p>
+        #end
+
+        <!--Calculating the bread discount if basket has bread-->
+        #set($breadDiscount = $basket.calculateBreadDiscount())
+        #if($breadDiscount != 0)
+        <p>Bread 50% off :  <b> -£$breadDiscount </b></p>
+        #end
+
+        <!--Calculating the final bill after applying discounts-->
+        <p> <b>Total :  £$basket.calculateFinalBill()</b> </p>
+    </div>
+
+</div>

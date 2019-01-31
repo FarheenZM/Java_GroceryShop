@@ -84,5 +84,13 @@ public class Controller {
             return null;
         }, velocityTemplateEngine);
 
+        // final bill when calculated
+        get("/bill", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("basket", basket);
+            model.put("template", "templates/bill.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
     }
 }
