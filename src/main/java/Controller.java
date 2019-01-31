@@ -66,5 +66,23 @@ public class Controller {
             return null;
         }, velocityTemplateEngine);
 
+        // post request used for removing product from basket
+        post("/basket/:id/remove", (request, response) -> {
+            Product productToRemove;
+            if(Integer.parseInt(request.params("id")) == 0){
+                productToRemove = soup;
+            }else if(Integer.parseInt(request.params("id")) == 1){
+                productToRemove = bread;
+            }else if(Integer.parseInt(request.params("id")) == 2){
+                productToRemove = milk;
+            }else{
+                productToRemove = apple;
+            }
+
+            basket.removeAProductFromBasket(productToRemove);
+            response.redirect("/basket");
+            return null;
+        }, velocityTemplateEngine);
+
     }
 }
