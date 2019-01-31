@@ -52,6 +52,75 @@ p {
     display : inline-block;
 }
 
+/* Basket */
+td {
+    padding: 10px;
+}
+
+.basket-display {
+     text-align : center;
+     display: grid;
+     grid-template-columns: 70px, 30px;
+     grid-gap: 5px;
+     grid-template-rows: auto;
+     grid-template-areas:
+       "hd hd"
+       "tb bt";
+}
+
+.basket-head {
+    grid-area: hd;
+}
+
+.basket-table {
+    grid-area: tb;
+    margin-left: 30%;
+}
+
+.basket-btns {
+    grid-area: bt;
+    margin-right: 20%;
+    margin-top: 20%;
+}
+
+/* Bill */
+.main-bill {
+    text-align : center;
+    border: 1px white solid;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 5%;
+    padding: 20px;
+}
+
+.main-bill p {
+    font-family: "Courier New";
+    font-size: 20px;
+    text-align : left;
+}
+
+/* Buttons */
+.button {
+    background-color: #7E685A;
+    color: white;
+    font-size: 20px;
+}
+
+.button:hover {
+    color: yellow;
+}
+
+#button-add {
+    font-size: 30px;
+    height : 50px;
+    width : 50px;
+}
+
+#button-remove {
+    background-color: #E85A4F;
+    font-size: 15px;
+}
+
 /* Footer */
 .footer {
   grid-row-start: 2;
