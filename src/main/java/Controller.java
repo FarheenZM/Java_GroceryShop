@@ -1,10 +1,20 @@
 import models.Basket;
 import models.Product;
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import static spark.Spark.*;
 
 public class Controller {
     public static void main(String[] args) {
+
+        VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
+
+        // for images & css
+        staticFileLocation("/public");
 
         // Creating product instances
         Product soup = new Product(0,"Soup", 0.65, "/images/soup.png");
@@ -19,26 +29,17 @@ public class Controller {
         allProductsInShop.add(milk);
         allProductsInShop.add(apple);
 
-        System.out.println(allProductsInShop);
-
         // Creating an empty shopping basket initially, where products will be later added by user actions
         Basket basket = new Basket();
-        System.out.println(basket.noOfProductsInTheBasket());
-        basket.addAProductToBasket(apple);
-        basket.addAProductToBasket(soup);
-        basket.addAProductToBasket(milk);
-        basket.addAProductToBasket(bread);
-        System.out.println(basket.noOfProductsInTheBasket());
-        System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
-        System.out.println(basket.calculateAppleDiscount());
-        System.out.println(basket.calculateBreadDiscount());
-        basket.addAProductToBasket(soup);
-        System.out.println(basket.calculateBreadDiscount());
 
-        System.out.println(soup);
-        System.out.println(basket.calculateSubtotalOfProductsInTheBasket());
-        System.out.println(basket.calculateFinalBill());
+        // home route
+        get("/", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("allProducts", allProductsInShop);
+            model.put("template", "templates/home.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+        
 
     }
 }
-

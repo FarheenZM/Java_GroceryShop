@@ -8,6 +8,7 @@
     <artifactId>GroceryShop</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
+
         <!--junit for testing-->
         <dependency>
             <groupId>junit</groupId>
@@ -15,6 +16,35 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <!--Spark as a web framework-->
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <!--Velocity as a template engine-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <!--for using Velocity templates with Spark-->
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-template-velocity</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+
+        <!--Velocity tools-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
