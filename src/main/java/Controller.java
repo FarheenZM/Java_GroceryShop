@@ -48,5 +48,23 @@ public class Controller {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+        // post request used for adding product to basket
+        post("/basket/:id", (request, response) -> {
+            Product basketProduct;
+            if(Integer.parseInt(request.params("id")) == 0){
+                basketProduct = soup;
+            }else if(Integer.parseInt(request.params("id")) == 1){
+                basketProduct = bread;
+            }else if(Integer.parseInt(request.params("id")) == 2){
+                basketProduct = milk;
+            }else{
+                basketProduct = apple;
+            }
+
+            basket.addAProductToBasket(basketProduct);
+            response.redirect("/basket");
+            return null;
+        }, velocityTemplateEngine);
+
     }
 }
