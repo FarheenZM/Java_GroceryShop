@@ -1,0 +1,54 @@
+<!--basket layout of all selected products-->
+
+<div>
+    #if($basket.noOfProductsInTheBasket() == 0)
+    <h2>Basket is Empty</h2>
+    #break
+    #end
+    <div class="basket-display">
+        <div class="basket-head">
+            <h2>Products in Basket</h2>
+        </div>
+
+        <div class="basket-table">
+            <table>
+
+                #foreach($product in $basket.getProducts())
+                <tr>
+                    <td>
+                        <img src="$product.getImageUrl()" width="80" height="100"/>
+                    </td>
+
+                    <td>
+                        $product.getName()
+                    </td>
+
+                    <td>
+                        £$product.getPrice()
+                    </td>
+
+                    <td>
+                        <form action="/basket/$product.getId()/remove" method="post">
+                            <input type="submit" value="Remove" class="button" id="button-remove"/>
+                        </form>
+                    </td>
+                </tr>
+                #end
+
+            </table>
+        </div>
+
+        <div class="basket-btns">
+            <form action="/bill" method="get">
+                <input type="submit" value="Calculate Bill" class="button"/>
+            </form>
+
+            <p>or</p>
+
+            <form action="/" method="get">
+                <input type="submit" value="Continue Shopping" class="button"/>
+            </form>
+        </div>
+    </div>
+
+</div>

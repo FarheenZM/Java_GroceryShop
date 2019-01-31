@@ -39,7 +39,14 @@ public class Controller {
             model.put("template", "templates/home.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
-        
+
+        // basket route
+        get("/basket", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("basket", basket);
+            model.put("template", "templates/basket.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
 
     }
 }
